@@ -13,5 +13,6 @@ func main() {
 	remainingCards.print()
 
 	fmt.Println(hand.toString())
+	cards.saveToFile("my_cards")
 
 }
