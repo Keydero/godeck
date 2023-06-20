@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
+	"os"
 	"strings"
 )
 
@@ -20,6 +21,17 @@ func newDeck() deck {
 		}
 	}
 	return cards
+}
+
+func newDeckFromFile(filename string) deck {
+	bs, err := ioutil.ReadFile(filename)
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+	s := strings.Split(string(bs), ",")
+
+	return deck(s)
 }
 
 func deal(d deck, handSize int) (deck, deck) {
